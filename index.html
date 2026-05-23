@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>División de Polinomios – Método de Horner</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<div class="background"></div>
+
+<div class="contenedor">
+
+    <div class="header">
+        <h1>División de Polinomios</h1>
+        <h2>Método de Horner</h2>
+        <p>El divisor puede ser de <strong>cualquier grado</strong>: x-2, 2x²+x-1, x³+2, etc.</p>
+    </div>
+
+    <div class="card-formulario">
+
+        <div class="grupo">
+            <label>Dividendo</label>
+            <input type="text" id="dividendo"
+                   placeholder="Ej: 2x^4-x^3+4x^2+5x-1">
+        </div>
+
+        <div class="grupo">
+            <label>Divisor</label>
+            <input type="text" id="divisor"
+                   placeholder="Ej: 2x^2-x+1  |  x-2  |  x^3+2">
+        </div>
+
+        <input type="hidden" id="valorX">
+
+        <div class="botones">
+            <button onclick="resolverDivision()" class="btn-resolver">Resolver</button>
+            <button onclick="limpiarCampos()" class="btn-limpiar">Limpiar</button>
+        </div>
+
+    </div>
+
+    <div class="resultado-card" id="seccionResultados" style="display:none;">
+        <div class="resultado-header">
+            <h2>Resultado del Procedimiento</h2>
+        </div>
+        <div id="tablaHorner"></div>
+        <div class="resultado-final" id="resultadoFinal"></div>
+    </div>
+
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,361 @@
+*{margin:0;padding:0;box-sizing:border-box;}
+
+body{
+    font-family:'Poppins',sans-serif;
+    background:#0f172a;
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:flex-start;
+    padding:30px;
+    overflow-x:hidden;
+    position:relative;
+}
+
+.background{
+    position:fixed;
+    width:100%;height:100%;
+    background:
+            radial-gradient(circle at top left,#4f46e5,transparent 30%),
+            radial-gradient(circle at bottom right,#06b6d4,transparent 30%);
+    opacity:0.4;
+    pointer-events:none;
+}
+
+/* CONTENEDOR */
+.contenedor{
+    width:100%;max-width:1100px;
+    position:relative;z-index:10;
+}
+
+/* HEADER */
+.header{text-align:center;margin-bottom:35px;}
+.header h1{color:white;font-size:46px;font-weight:700;}
+.header h2{color:#38bdf8;margin-top:8px;font-size:28px;}
+.header p{color:#cbd5e1;margin-top:10px;font-size:15px;}
+.header strong{color:#fbbf24;}
+
+/* FORMULARIO */
+.card-formulario{
+    background:rgba(15,23,42,0.85);
+    backdrop-filter:blur(10px);
+    border-radius:25px;padding:35px;
+    border:1px solid rgba(255,255,255,0.08);
+    box-shadow:0 10px 40px rgba(0,0,0,0.4);
+}
+.grupo{margin-bottom:22px;}
+label{display:block;color:white;margin-bottom:8px;font-weight:600;}
+input[type="text"]{
+    width:100%;padding:14px 16px;
+    border:2px solid transparent;outline:none;
+    border-radius:14px;background:#1e293b;
+    color:white;font-size:16px;
+    transition:border-color 0.3s, transform 0.3s;
+    font-family:'Poppins',sans-serif;
+}
+input[type="text"]:focus{
+    border-color:#38bdf8;
+    transform:scale(1.01);
+}
+
+/* BOTONES */
+.botones{display:flex;gap:16px;margin-top:10px;}
+button{
+    flex:1;padding:15px;border:none;
+    border-radius:14px;cursor:pointer;
+    font-size:16px;font-weight:700;
+    transition:transform 0.25s, box-shadow 0.25s;
+    font-family:'Poppins',sans-serif;
+}
+.btn-resolver{background:linear-gradient(135deg,#4f46e5,#06b6d4);color:white;}
+.btn-limpiar{background:#334155;color:white;}
+button:hover{transform:translateY(-3px);box-shadow:0 10px 20px rgba(0,0,0,0.3);}
+
+/* RESULTADO CARD */
+.resultado-card{
+    margin-top:30px;
+    background:rgba(15,23,42,0.85);
+    backdrop-filter:blur(10px);
+    border-radius:25px;padding:35px;
+    border:1px solid rgba(255,255,255,0.08);
+    box-shadow:0 10px 40px rgba(0,0,0,0.4);
+}
+.resultado-header h2{
+    color:white;text-align:center;
+    margin-bottom:30px;font-size:26px;
+}
+
+/* POLINOMIOS ORDENADOS */
+.ordenado{margin-bottom:30px;}
+.titulo-ordenado{
+    color:white;font-size:20px;
+    font-weight:700;margin-bottom:14px;
+    letter-spacing:0.05em;
+}
+.ecuacion-box{
+    background:rgba(0,0,0,0.35);
+    border:2px solid #00c3ff;
+    border-radius:20px;padding:25px 30px;
+    text-align:center;font-size:42px;
+    font-weight:700;overflow-x:auto;
+    box-shadow:0 0 20px rgba(0,195,255,0.25);
+}
+
+/* COLORES */
+.morado{color:#8b5cf6;}
+.celeste{color:#22d3ee;}
+.rojo{color:#ff4d6d;}
+.amarillo{color:#fbbf24;}
+.verde{color:#4ade80;}
+.verde-texto{color:#4ade80;}
+.rojo-texto{color:#fb7185;}
+.signo{color:white;margin:0 10px;}
+
+/* ===========================
+   TABLA DE HORNER REAL
+   =========================== */
+.valor-x{
+    margin-bottom:16px;color:white;
+    font-size:22px;font-weight:700;
+    text-align:center;
+}
+.horner-container{
+    margin-top:30px;overflow-x:auto;
+    display:flex;justify-content:center;
+}
+
+.tabla-horner-final{
+    border-collapse:collapse;
+    background:rgba(15,23,42,0.96);
+    border-radius:16px;overflow:hidden;
+    box-shadow:0 10px 40px rgba(0,0,0,0.5);
+}
+
+/* Celda de la raíz (columna izquierda) */
+.lado-x{
+    width:90px;text-align:center;
+    font-size:26px;font-weight:700;
+    color:white;padding:16px 10px;
+    background:linear-gradient(135deg,#7c3aed,#06b6d4);
+    border-right:4px solid white;
+}
+thead .lado-x{font-size:18px;font-weight:600;}
+
+/* Encabezado de exponentes */
+.tabla-horner-final thead th{
+    padding:14px 10px;text-align:center;
+    color:#94a3b8;font-size:16px;
+    background:rgba(30,41,59,0.95);
+    border:1px solid rgba(255,255,255,0.06);
+    min-width:80px;
+}
+
+/* Celdas de datos */
+.cuadro{
+    width:80px;height:68px;
+    text-align:center;font-size:24px;
+    font-weight:700;
+    border:1px solid rgba(255,255,255,0.08);
+    transition:background 0.2s, transform 0.2s;
+}
+.cuadro:hover{
+    background:rgba(6,182,212,0.2);
+    transform:scale(1.06);
+}
+
+/* Filas */
+.superior{color:#38bdf8;background:rgba(30,41,59,0.95);}
+.medio{color:#fbbf24;background:rgba(51,65,85,0.9);font-size:20px;}
+.inferior{color:#4ade80;background:rgba(15,23,42,0.98);font-size:26px;font-weight:800;}
+
+/* Línea horizontal separadora */
+.linea-horizontal{
+    height:4px;background:white;
+    padding:0;display:block;
+}
+
+/* Zona del residuo — separada con borde izquierdo */
+.residuo-zona{
+    border-left:4px solid #fb7185 !important;
+    color:#fb7185 !important;
+}
+
+/* ===========================
+   PASOS
+   =========================== */
+.pasos-container{margin-top:35px;}
+.paso{
+    background:rgba(255,255,255,0.05);
+    border-left:5px solid #38bdf8;
+    padding:18px 22px;margin-bottom:16px;
+    border-radius:16px;color:white;
+    line-height:1.8;
+    transition:transform 0.25s;
+}
+.paso:hover{transform:translateX(8px);}
+.paso strong{color:#38bdf8;font-size:18px;}
+
+/* ===========================
+   BLOQUES DE RESULTADO
+   =========================== */
+.resultado-bloques{
+    margin-top:35px;
+    display:flex;justify-content:center;
+    gap:30px;flex-wrap:wrap;
+}
+.bloque-resultado{
+    width:420px;
+    background:rgba(15,23,42,0.95);
+    border:1px solid rgba(255,255,255,0.08);
+    border-radius:20px;overflow:hidden;
+    box-shadow:0 10px 30px rgba(0,0,0,0.4);
+}
+.titulo-resultado{
+    padding:18px;font-size:26px;
+    font-weight:700;text-align:center;
+    border-bottom:1px solid rgba(255,255,255,0.08);
+}
+.contenido-resultado{
+    padding:28px;text-align:center;
+    font-size:42px;font-weight:700;
+    overflow-x:auto;
+}
+
+/* ===========================
+   RESULTADO FINAL
+   =========================== */
+.resultado-final{
+    margin-top:30px;
+    background:linear-gradient(135deg,#06b6d4,#4f46e5);
+    color:white;padding:22px 30px;
+    border-radius:18px;text-align:center;
+    font-size:22px;font-weight:700;
+    word-break:break-word;
+}
+
+/* ===========================
+   RESPONSIVE
+   =========================== */
+@media(max-width:768px){
+    .header h1{font-size:32px;}
+    .header h2{font-size:22px;}
+    .ecuacion-box{font-size:28px;padding:18px;}
+    .botones{flex-direction:column;}
+    .bloque-resultado{width:100%;}
+    .contenido-resultado{font-size:30px;}
+    .cuadro{width:60px;height:56px;font-size:18px;}
+    .lado-x{font-size:18px;width:65px;}
+}
+
+/* ===========================
+   TABLA HORNER GENERAL – NUEVOS ESTILOS
+   =========================== */
+
+/* Encabezado columnas cociente / residuo */
+.th-cociente{
+    color:#4ade80;font-size:15px;
+    background:rgba(30,41,59,0.95);
+    border:1px solid rgba(255,255,255,0.06);
+    min-width:78px;padding:12px 8px;text-align:center;
+}
+.th-residuo{
+    color:#fb7185;font-size:15px;
+    background:rgba(30,41,59,0.95);
+    border:1px solid rgba(255,255,255,0.06);
+    min-width:78px;padding:12px 8px;text-align:center;
+}
+
+/* Fila Bmod (coefs divisor con signo cambiado) */
+.lado-bmod{
+    font-size:14px;font-weight:600;
+    color:#fbbf24;
+    background:linear-gradient(135deg,#7c3aed,#06b6d4);
+}
+.bmod{
+    color:#fbbf24;font-size:18px;font-weight:700;
+    background:rgba(71,52,20,0.5);
+    border:1px solid rgba(251,191,36,0.2);
+    text-align:center;padding:8px;
+}
+.bmod-vacio{
+    background:rgba(71,52,20,0.15);
+    border:1px solid rgba(255,255,255,0.04);
+}
+.lado-prod{
+    background:linear-gradient(135deg,#7c3aed55,#06b6d455);
+}
+.vacio{color:transparent;}
+
+/* Leyenda */
+.leyenda-tabla{
+    display:flex;flex-wrap:wrap;justify-content:center;
+    gap:18px;margin-top:16px;
+    font-size:13px;font-weight:600;
+}
+.leyenda-item{display:flex;align-items:center;gap:6px;}
+.superior-leyenda{color:#38bdf8;}
+.medio-leyenda{color:#fbbf24;}
+.inferior-leyenda{color:#4ade80;}
+.residuo-leyenda{color:#fb7185;}
+
+/* Paso residuo */
+.paso-residuo{border-left-color:#fb7185;}
+.paso-residuo strong{color:#fb7185;}
+
+/* ===========================
+   COLUMNA LATERAL – COEFICIENTES DIVIDENDO
+   =========================== */
+
+/* Celda lateral que abarca todas las filas del cuerpo */
+.lado-dividendo {
+    vertical-align: top;
+    padding: 6px 4px;
+    background: linear-gradient(135deg, #7c3aed, #06b6d4);
+    border-right: 4px solid white;
+    text-align: center;
+}
+
+/* Cada coeficiente apilado verticalmente */
+.coef-lateral {
+    color: white;
+    font-size: 17px;
+    font-weight: 700;
+    line-height: 1;
+    /* altura igual a la celda .cuadro (68px) */
+    height: 68px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0.92;
+    letter-spacing: 0.02em;
+}
+
+/* Celda lateral de la fila de resultados */
+.lado-resultado {
+    background: linear-gradient(135deg, #4f46e5, #06b6d4);
+    border-right: 4px solid white;
+}
+
+/* ===========================
+   COLUMNA LATERAL – VALORES DEL DIVISOR
+   =========================== */
+
+/* Celda lateral con un valor del divisor (b0 o Bmod[k]) */
+.lado-divisor-val {
+    text-align: center;
+    font-size: 22px;
+    font-weight: 800;
+    color: white;
+    background: linear-gradient(135deg, #7c3aed, #06b6d4);
+    border-right: 4px solid white;
+    vertical-align: middle;
+    height: 68px;
+    min-width: 70px;
+}
+
+/* Filas de Bmod: tono ligeramente distinto para distinguirlas de b0 */
+.bmod-lateral {
+    font-size: 19px;
+    color: #fbbf24;
+    background: linear-gradient(135deg, #6d28d9aa, #0891b2aa);
+}
